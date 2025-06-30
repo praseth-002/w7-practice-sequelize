@@ -1,7 +1,7 @@
-const ClassAttendanceTable = ({ records }) => {
+const attendanceTable = ({ records }) => {
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-2">Class Attendance</h2>
+      <h2 className="text-xl font-semibold mb-2">Attendance Table</h2>
       <table className="table-auto border w-full">
         <thead>
           <tr>
@@ -24,4 +24,4 @@ const ClassAttendanceTable = ({ records }) => {
   );
 };
 
-export default ClassAttendanceTable;
+export default attendanceTable;
