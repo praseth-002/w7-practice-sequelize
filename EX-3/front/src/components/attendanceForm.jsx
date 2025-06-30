@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { markAttendance } from "../services/api";
 
-// ✅ Added onAttendanceMarked to props
 const AttendanceForm = ({ selectedClassId, setSelectedClassId, onAttendanceMarked }) => {
   const [studentId, setStudentId] = useState(1);
   const [date, setDate] = useState("");
@@ -11,7 +10,7 @@ const AttendanceForm = ({ selectedClassId, setSelectedClassId, onAttendanceMarke
     e.preventDefault();
     await markAttendance({ studentId, classId: selectedClassId, date, mark });
     alert("Attendance marked");
-    await onAttendanceMarked(); // ✅ Refresh data in parent
+    await onAttendanceMarked();
   };
 
   return (

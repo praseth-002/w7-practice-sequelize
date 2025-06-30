@@ -6,9 +6,9 @@ import express from "express";
 import cors from "cors";
 import attendanceRoute from "./routes/attendanceRoute.js";
 
-const app = express(); // ✅ define app first
+const app = express(); 
 
-app.use(cors());       // ✅ then use it
+app.use(cors());
 app.use(express.json());
 
 app.use("/", attendanceRoute);

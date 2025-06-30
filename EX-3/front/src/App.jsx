@@ -16,7 +16,6 @@ function App() {
     fetchAttendance();
   }, [selectedClassId]);
 
-  // ✅ Added to refresh attendance data after marking
   const handleAttendanceMarked = async () => {
     const data = await getClassAttendance(selectedClassId);
     setAttendanceRecords(data);
@@ -28,7 +27,7 @@ function App() {
       <AttendanceForm
         selectedClassId={selectedClassId}
         setSelectedClassId={setSelectedClassId}
-        onAttendanceMarked={handleAttendanceMarked} // ✅ Pass refresh callback
+        onAttendanceMarked={handleAttendanceMarked}
       />
       <ClassAttendanceTable records={attendanceRecords} />
     </div>
