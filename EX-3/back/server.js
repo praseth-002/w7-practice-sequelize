@@ -1,22 +1,17 @@
-// import sequelize from "./databases/database.js";
-
-// const start = async () => {
-//   try {
-//     await sequelize.authenticate();
-//     console.log("SUCCESS");
-//   } catch (error) {
-//     console.error("ERROR", error);
-//   }
-// };
-
-// start();
+// server.js
+import Dotenv from "dotenv";
+Dotenv.config();
 
 import express from "express";
-import attendanceRoutes from "./routes/attendanceRoutes.js";
+import cors from "cors";
+import attendanceRoute from "./routes/attendanceRoute.js";
 
-const app = express();
+const app = express(); // ✅ define app first
+
+app.use(cors());       // ✅ then use it
 app.use(express.json());
-app.use("/", attendanceRoutes);
+
+app.use("/", attendanceRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

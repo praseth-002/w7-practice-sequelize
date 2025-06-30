@@ -12,10 +12,6 @@ const s1 = await Student.create({ name: "Alice", classId: classA.id });
 const s2 = await Student.create({ name: "Bob", classId: classA.id });
 const s3 = await Student.create({ name: "Charlie", classId: classB.id });
 
-// Optional: sample attendance
-await Attendance.create({ studentId: s1.id, classId: classA.id, date: "2025-06-29", mark: "Present" });
-await Attendance.create({ studentId: s2.id, classId: classA.id, date: "2025-06-29", mark: "Absent" });
-await Attendance.create({ studentId: s3.id, classId: classB.id, date: "2025-06-29", mark: "Present" });
 
 console.log("Sample data added.");
 process.exit();

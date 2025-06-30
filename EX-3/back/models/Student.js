@@ -10,5 +10,5 @@ const Student = sequelize.define('Student', {
 
 export default Student;
 
-Student.belongsTo(Class);
-Class.hasMany(Student);
+Student.belongsTo(Class, { foreignKey: "classId" });
+Class.hasMany(Student, { foreignKey: "classId" });

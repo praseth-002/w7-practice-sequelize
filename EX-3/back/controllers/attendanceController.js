@@ -1,4 +1,4 @@
-import * as attendanceRepo from "../repositories/attendanceRepository.js";
+import * as attendanceRepo from "../repositories/attendanceRepo.js";
 
 export async function postAttendance(req, res) {
   try {
