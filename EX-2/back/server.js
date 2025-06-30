@@ -17,7 +17,7 @@ import Book from './models/Book.js';
 
 const setup = async () => {
   try {
-    await sequelize.sync({ force: true }); // recreates tables
+    await sequelize.sync({ force: true });
     console.log("DB synced");
 
     const authors = await Promise.all([
@@ -26,7 +26,6 @@ const setup = async () => {
       Author.create({ name: "Hok Tim", birthYear: 2015 }),
     ]);
 
-    // Add books to each author
     await authors[0].createBook({ title: "Book 1", publicationYear: 2025, pages: 25 });
     await authors[0].createBook({ title: "Book 2", publicationYear: 2024, pages: 24 });
 
@@ -37,10 +36,11 @@ const setup = async () => {
     await authors[2].createBook({ title: "Book 6", publicationYear: 2020, pages: 20 });
 
     const kimAng = await Author.findOne({ where: { name: "Kim Ang" } });
-    const kimAngBooks = await kimAng.getBooks();
+    let kimAngBooks = await kimAng.getBooks();
     console.log("Books by Kim Ang:", kimAngBooks.map(book => book.title));
 
     await kimAng.createBook({title : "Book 0", publicationYear : 2010, pages : 10});
+    kimAngBooks = await kimAng.getBooks();
     console.log("Books by Kim Ang:", kimAngBooks.map(book => book.title));
 
     const authorsWithBooks = await Author.findAll({
@@ -49,7 +49,7 @@ const setup = async () => {
     authorsWithBooks.forEach(author => {
       console.log(`${author.name}'s books:`);
       author.Books.forEach(book => {
-        console.log(`- ${book.title} (${book.publicationYear})`);
+        console.log(`- ${book.title} (${book.publicationYear}) Page: (${book.pages})`);
       });
     });
 
